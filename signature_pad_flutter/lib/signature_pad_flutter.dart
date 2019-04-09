@@ -31,9 +31,7 @@ class SignaturePadWidget extends StatefulWidget {
   final SignaturePadController controller;
   SignaturePadWidget(this.controller, this.opts);
 
-  State<StatefulWidget> createState() {
-    return new SignaturePadState(controller, opts);
-  }
+  State<StatefulWidget> createState() => SignaturePadState();
 }
 
 class SignaturePadState extends State<SignaturePadWidget>
@@ -43,8 +41,7 @@ class SignaturePadState extends State<SignaturePadWidget>
   List<SPPoint> allPoints = [];
   bool _onDrawStartCalled = false;
 
-  SignaturePadState(this._controller, SignaturePadOptions opts) {
-    this.opts = opts;
+  SignaturePadState() {
     clear();
     on();
   }
@@ -63,7 +60,8 @@ class SignaturePadState extends State<SignaturePadWidget>
   }
 
   Widget build(BuildContext context) {
-    _currentPainter = new SignaturePadPainter(allPoints, opts);
+    this.opts = widget.opts;
+    _currentPainter = new SignaturePadPainter(allPoints, widget.opts);
     return new ClipRect(
       child: new CustomPaint(
         painter: _currentPainter,
