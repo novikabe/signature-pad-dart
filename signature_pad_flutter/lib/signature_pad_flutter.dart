@@ -31,7 +31,7 @@ class SignaturePadWidget extends StatefulWidget {
   final SignaturePadController controller;
   SignaturePadWidget(this.controller, this.opts);
 
-  State<StatefulWidget> createState() => SignaturePadState();
+  State<StatefulWidget> createState() => SignaturePadState(this.controller, this.opts);
 }
 
 class SignaturePadState extends State<SignaturePadWidget>
