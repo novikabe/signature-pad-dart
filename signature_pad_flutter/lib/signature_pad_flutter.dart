@@ -41,7 +41,8 @@ class SignaturePadState extends State<SignaturePadWidget>
   List<SPPoint> allPoints = [];
   bool _onDrawStartCalled = false;
 
-  SignaturePadState() {
+  SignaturePadState(this._controller, SignaturePadOptions opts) {
+    this.opts = opts;
     clear();
     on();
   }
@@ -60,7 +61,6 @@ class SignaturePadState extends State<SignaturePadWidget>
   }
 
   Widget build(BuildContext context) {
-    this.opts = widget.opts;
     _currentPainter = new SignaturePadPainter(allPoints, widget.opts);
     return new ClipRect(
       child: new CustomPaint(
